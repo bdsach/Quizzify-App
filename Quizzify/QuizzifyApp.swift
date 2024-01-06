@@ -34,7 +34,7 @@ func checkCookie(completion: @escaping(Bool)-> Void) {
                 print("HttpOnly: \(cookie.isHTTPOnly)")
                 print("----------")
                 
-                if !cookie.name.isEmpty {
+                if !cookie.name.isEmpty && cookie.name == "token" {
                     completion(true)
                 } else {
                     completion(false)

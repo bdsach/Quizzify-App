@@ -9,7 +9,20 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject private var vm = LoginViewModel()
+
     var body: some View {
+        if vm.isBusy {
+             ProgressView()
+        } else {
+            if vm.isLogged {
+                HomeView()
+            } else {
+                Content
+            }
+        }
+    }
+    
+    var Content: some View {
         VStack(content: {
             Text("LoginView!")
             Button(action: {
@@ -18,6 +31,7 @@ struct LoginView: View {
                 Text("Logint")
             })
         })
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -11,6 +11,19 @@ struct ProfileView: View {
     @ObservedObject private var vm = ProfileViewModel()
 
     var body: some View {
+        if vm.isBusy {
+            ProgressView()
+                .navigationBarBackButtonHidden()
+        } else {
+            if vm.isLogged {
+                Content
+            } else {
+                LoginView()
+            }
+        }
+    }
+    
+    var Content: some View {
         List {
             Section("Account") {
                 VStack(content: {
@@ -27,6 +40,13 @@ struct ProfileView: View {
                     })
                 })
             }
+            Section {
+                Button(action: {
+                    vm.logout()
+                }, label: {
+                    Text("Logout")
+                })
+            }
             
             Section("App Version") {
                 Text("1.0.0")
@@ -38,7 +58,6 @@ struct ProfileView: View {
                 BackButton()
             }
         }
-        
     }
 }
 

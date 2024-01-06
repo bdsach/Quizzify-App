@@ -35,7 +35,7 @@ final class AuthService {
     }
     
     func logout() {
-        guard let logoutURL = URL(string: "https://book-crud-api.fly.dev/logout") else {
+        guard let logoutURL = URL(string: "https://quizzify-api.fly.dev/logout") else {
             return
         }
 

@@ -26,6 +26,7 @@ struct HomeView: View {
                 .background(Color.appColorBackground)
             }
         }
+        .navigationBarBackButtonHidden()
     }
     
     var Topbar: some View {
