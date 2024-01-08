@@ -15,28 +15,38 @@ final class LoginViewModel: ObservableObject {
     init() {
         checkCookie { logged in
             if logged {
+                print("logged")
                 self.isLogged = true
-                self.isBusy = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.isBusy = false
+                })
             } else {
-                self.isBusy = false
+                print("no")
                 self.isLogged = false
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.isBusy = false
+                })
             }
         }
     }
     
-    func login() {
-        print("login is tapped!")
-        AuthService.shared.login { result in
+    func login(_ user: UserLogin) {
+        print("login is tapped! \(user)")
+        self.isBusy = true
+        AuthService.shared.login(user: user) { result in
             switch result {
             case .success(let success):
                 print(success)
                 self.isLogged = true
-                self.isBusy = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.isBusy = false
+                })
             case .failure(let failure):
                 print(failure)
                 self.isLogged = false
-                self.isBusy = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.isBusy = false
+                })
             }
         }
     }

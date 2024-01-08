@@ -24,6 +24,11 @@ func checkCookie(completion: @escaping(Bool)-> Void) {
         print(cookies)
         if let cookies = HTTPCookieStorage.shared.cookies {
             print("All Cookies: from APP")
+            
+            if cookies.isEmpty {
+                completion(false)
+            }
+
             for cookie in cookies {
                 print("Name: \(cookie.name)")
                 print("Value: \(cookie.value)")

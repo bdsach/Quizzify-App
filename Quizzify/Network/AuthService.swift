@@ -16,16 +16,17 @@ enum LoginError: Error {
 final class AuthService {
     static let shared = AuthService()
     
-    func login(completion: @escaping(Result<String, Error>) -> Void) {
+    func login(user parameter: UserLogin, completion: @escaping(Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "https://quizzify-api.fly.dev/login") else { return }
-        
-        let parameter = UserLogin(email: "user@email.com", password: "1234")
         
         AF.request(url, method: .post, parameters: parameter, encoder: JSONParameterEncoder.default).responseData { response in
             switch response.result {
             case .success(let data):
-                print(data)
-                completion(.success("Login is success"))
+                guard let statusCode = response.response?.statusCode else { return }
+                if statusCode == 200 {
+                    completion(.success(true))
+                }
+                
             case .failure(let failure):
                 print("error on auth")
                 print(failure)
