@@ -21,7 +21,7 @@ final class LoginViewModel: ObservableObject {
                     self.isBusy = false
                 })
             } else {
-                print("no")
+                print("not logged")
                 self.isLogged = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.isBusy = false
@@ -31,7 +31,7 @@ final class LoginViewModel: ObservableObject {
     }
     
     func login(_ user: UserLogin) {
-        print("login is tapped! \(user)")
+        print("login for \(user)")
         self.isBusy = true
         AuthService.shared.login(user: user) { result in
             switch result {

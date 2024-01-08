@@ -14,6 +14,7 @@ final class QuestionViewModel: ObservableObject {
     @Published var selected = ""
     @Published var answerId = ""
     @Published var emptyQuestion = false
+    @Published var showResult = false
     
     init() {
         questionsIsLoading = true
@@ -61,7 +62,7 @@ final class QuestionViewModel: ObservableObject {
             if qIndex < questions.count - 1 {
                 self.qIndex += 1
             } else {
-                qIndex = 0
+                self.showResult = true
             }
         }
     }

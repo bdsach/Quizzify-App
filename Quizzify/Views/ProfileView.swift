@@ -13,6 +13,7 @@ struct ProfileView: View {
     var body: some View {
         if vm.isBusy {
             ProgressView()
+                .controlSize(.large)
                 .navigationBarBackButtonHidden()
         } else {
             if vm.isLogged {

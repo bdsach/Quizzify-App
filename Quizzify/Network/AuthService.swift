@@ -7,6 +7,8 @@
 
 import Foundation
 import Alamofire
+import WebKit
+
 
 enum LoginError: Error {
     case invalidCredentials
@@ -35,7 +37,8 @@ final class AuthService {
         }
     }
     
-    func logout() {
+    func logout(completion: @escaping(Result<Bool, Error>) -> Void ) {
+        
         guard let logoutURL = URL(string: "https://quizzify-api.fly.dev/logout") else {
             return
         }
@@ -46,11 +49,18 @@ final class AuthService {
                 do {
                     guard let bodyObject = try JSONSerialization.jsonObject(with: data) as? [String:Any] else {return}
                     print(bodyObject)
+                    
+                    checkCookie { logged in
+                        if !logged {
+                            completion(.success(true))
+                        }
+                    }
                 } catch {
                     
                 }
             case .failure(let failure):
                 print(failure)
+                completion(.failure(failure))
             }
         }
     }

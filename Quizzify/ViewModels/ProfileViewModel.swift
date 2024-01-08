@@ -34,9 +34,17 @@ final class ProfileViewModel: ObservableObject {
         isBusy = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            self.isBusy = false
-            AuthService.shared.logout()
-            self.isLogged = false
+            AuthService.shared.logout { result in
+                switch result {
+                case .success:
+                    self.isBusy = false
+                    self.isLogged = false
+                case .failure:
+                    self.isLogged = true
+                    self.isBusy = true
+                }
+            }
+            
         })
     }
     

@@ -14,12 +14,9 @@ struct LoginView: View {
 
     var body: some View {
         VStack {
-            if
-//                vm.isBusy
-            false
-            
-            {
+            if vm.isBusy {
                  ProgressView()
+                    .controlSize(.large)
             } else {
                 if vm.isLogged {
                     HomeView()
@@ -30,6 +27,7 @@ struct LoginView: View {
         }
         .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
         .background(Color.appColorBackground)
+        .navigationBarBackButtonHidden()
     }
     
     var Logo: some View {

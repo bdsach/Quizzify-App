@@ -13,9 +13,21 @@ final class HomeViewModel: ObservableObject {
     @Published var avatarUrl = URL(string: "https://avatarfiles.alphacoders.com/138/138946.jpg")
     @Published var categories: [Categories] = []
     @Published var categoriesIsLoading = false
+    @Published var isLogged = false
     
     init() {
         self.categoriesIsLoading = true
+        checkCookie { logged in
+            if logged {
+                self.isLogged = true
+                self.loadCategories()
+            } else {
+                self.isLogged = false
+            }
+        }
+    }
+    
+    func loadCategories() {
         QuizService.shared.categories { result in
             switch result {
             case .success(let data):
