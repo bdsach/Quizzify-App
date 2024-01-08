@@ -34,11 +34,6 @@ struct QuestionView: View {
         })
         .background(.appColorBackground)
         .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                BackButton()
-            }
-        }
         .onAppear {
             vm.getQuestions(currentQuizId: quizId)
         }
@@ -53,7 +48,7 @@ struct QuestionView: View {
                         .fontWeight(.semibold)
                         .font(.headline)
                     
-                    ProgressView(value: 1, total: Double(5))
+                    ProgressView(value: Double(vm.qIndex + 1), total: Double(questions.count))
                         .progressViewStyle(.linear)
                         .tint(.appColorPrimary)
                     
@@ -101,6 +96,12 @@ struct QuestionView: View {
                 Spacer()
             }
         })
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+        }
     }
 }
 

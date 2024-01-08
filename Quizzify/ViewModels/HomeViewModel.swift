@@ -8,9 +8,9 @@
 import Foundation
 
 final class HomeViewModel: ObservableObject {
-    @Published var sayHello = "Hi Bandit! 👋"
+    @Published var sayHello = ""
     @Published var welcomeMessage = "Are you up for a quiz adventure?\nLet's see what you've got!"
-    @Published var avatarUrl = URL(string: "https://avatarfiles.alphacoders.com/138/138946.jpg")
+    @Published var profile: Profile?
     @Published var categories: [Categories] = []
     @Published var categoriesIsLoading = false
     @Published var isLogged = false
@@ -22,6 +22,21 @@ final class HomeViewModel: ObservableObject {
                 self.isLogged = true
                 self.loadCategories()
             } else {
+                self.isLogged = false
+            }
+        }
+        getProfile()
+    }
+    
+    func getProfile() {
+        AuthService.shared.profile { result in
+            switch result {
+            case .success(let data):
+                self.profile = data
+                self.isLogged = true
+                self.sayHello = "Hi \(self.profile?.firstName ?? "Guest")! 👋"
+            case .failure(let failure):
+                print(failure)
                 self.isLogged = false
             }
         }

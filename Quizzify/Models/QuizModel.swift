@@ -65,3 +65,19 @@ struct AnswerSheet: Codable {
     }
 }
 
+struct AnswerSheetResultRequest: Codable {
+    let quidId: String
+    let userId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case quidId = "quiz_id"
+        case userId = "user_id"
+        
+    }
+}
+
+
+struct AnswerSheetResultReponse: Codable {
+    let total: Int
+    let correct: Int
+}

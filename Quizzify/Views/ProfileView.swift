@@ -29,9 +29,14 @@ struct ProfileView: View {
             Section("Account") {
                 VStack(content: {
                     HStack(content: {
-                        Circle()
-                            .fill(.gray.opacity(0.5))
-                            .frame(width: 50, height: 50)
+                        AsyncImage(url: URL(string: vm.profile?.avatar ?? "")) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+
                         VStack(alignment: .leading, spacing: 0 ,content: {
                             Text("\(vm.profile?.firstName ?? "(not set)") \(vm.profile?.lastName ?? "")")
                                 .foregroundStyle(.black.opacity(0.8))

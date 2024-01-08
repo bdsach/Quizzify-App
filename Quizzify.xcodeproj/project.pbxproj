@@ -32,6 +32,7 @@
 		12E321A02B4832C900925DC3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E3219F2B4832C900925DC3 /* AuthService.swift */; };
 		12E321A22B48340900925DC3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E321A12B48340900925DC3 /* UserModel.swift */; };
 		12E321A42B483D8300925DC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E321A32B483D8300925DC3 /* ProfileViewModel.swift */; };
+		12EC80B22B4C155300F6F65A /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EC80B12B4C155300F6F65A /* ResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		12E3219F2B4832C900925DC3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		12E321A12B48340900925DC3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		12E321A32B483D8300925DC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		12EC80B12B4C155300F6F65A /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				12E321952B481F3500925DC3 /* LoginViewModel.swift */,
 				12E3219D2B4820D000925DC3 /* LoginFlowViewModel.swift */,
 				12E321A32B483D8300925DC3 /* ProfileViewModel.swift */,
+				12EC80B12B4C155300F6F65A /* ResultViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				121010532B4685DC00134725 /* ProfileView.swift in Sources */,
 				12E321A42B483D8300925DC3 /* ProfileViewModel.swift in Sources */,
 				12E3218C2B46C14800925DC3 /* CategoriesModel.swift in Sources */,
+				12EC80B22B4C155300F6F65A /* ResultViewModel.swift in Sources */,
 				12E321872B469DC000925DC3 /* BackButton.swift in Sources */,
 				12E321822B46945600925DC3 /* QuizService.swift in Sources */,
 				12E321962B481F3500925DC3 /* LoginViewModel.swift in Sources */,

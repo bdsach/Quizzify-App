@@ -31,18 +31,21 @@ struct HomeView: View {
     
     var Topbar: some View {
         HStack(content: {
-            Circle()
-                .fill(.clear)
-                .overlay {
-                    AsyncImage(url: vm.avatarUrl) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
+            if let avatar = vm.profile?.avatar {
+                Circle()
+                    .fill(.clear)
+                    .overlay {
+                        AsyncImage(url: URL(string: avatar)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
-                }
-                .clipShape(Circle())
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 3, y: 0)
-                .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+                    .shadow(color: .black.opacity(0.1), radius: 5, x: 3, y: 0)
+                    .frame(width: 60, height: 60)
+            }
+            
             Spacer()
             NavigationLink {
                 ProfileView()

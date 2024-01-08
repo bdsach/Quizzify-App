@@ -16,10 +16,12 @@ struct Profile: Codable {
     let email: String
     let firstName: String?
     let lastName: String?
+    let avatar: String?
     
     enum CodingKeys: String, CodingKey {
         case email = "email"
         case firstName = "first_name"
         case lastName = "last_name"
+        case avatar = "avatar"
     }
 }
