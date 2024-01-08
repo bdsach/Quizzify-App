@@ -9,7 +9,6 @@
 
 ## Technology
 
-- **Swift:** 5.5
-- **SwiftUI**
-- **Alamofire:** for making network requests to your API
-- **MVVM Pattern:**
+- SwiftUI
+- Alamofire: for making network requests to your API
+- MVVM Pattern
