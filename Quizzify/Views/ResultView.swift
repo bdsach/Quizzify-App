@@ -23,15 +23,16 @@ struct ResultView: View {
         VStack(spacing: 20) {
             Text("Result")
                 .font(.largeTitle.bold())
-            
+                .foregroundStyle(.black.opacity(0.8))
             HStack {
                 if let result = vm.result {
                     Text("\(result.correct) / \(result.total)")
-                        .font(.system(size: 50))
+                        .font(.system(size: 72))
                 }
             }
             .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: 200, alignment: .center)
-            .background(Color.gray.opacity(0.2))
+            .background(Color.appColorPrimary.opacity(0.1))
+            .foregroundStyle(Color.appColorPrimary.opacity(1))
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .padding()
             
@@ -39,19 +40,33 @@ struct ResultView: View {
                 HomeView()
             } label: {
                 HStack(content: {
-                    Text("Go Home")
-                        .font(.title3)
-                        .fontWeight(.medium)
+                    HomeButton
                 })
-                .frame(width: 120, height: 50)
-                .background(Color.appColorPrimary)
-                .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
         }
+    }
+    
+    var HomeButton: some View {
+        Capsule()
+            .foregroundColor(.black.opacity(0.6))
+            .frame(width: 130, height: 60)
+            .overlay(
+                Capsule()
+                    .foregroundColor(Color.appColorBackground)
+                    .frame(width: 125, height: 55)
+                    .overlay(
+                        VStack {
+                            Text("Home")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.black.opacity(0.7))
+                        }
+                    )
+            )
     }
 }
 
 #Preview {
     ResultView()
+        .environmentObject(ResultViewModel())
 }
