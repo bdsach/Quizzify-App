@@ -2,6 +2,8 @@
 
 ## Description
 
+Quizzify is a clean and simple app that allows you to test your knowledge with questions from categories.
+
 ## Screenshots
 
 | Login View  | Home View  |
@@ -14,11 +16,20 @@
 
 ## Key Features
 
+- Login with email and password
+- External API: [https://quizzify-api.fly.dev](https://quizzify-api.fly.dev) with cookie authentication
+- Use MVVM Pattern
+- Question and Result View
+
 ## Technology
 
 - SwiftUI
 - Alamofire: for making network requests to your API
-- MVVM Pattern
+
+## TODO
+
+- Register View
+- Add Question for all categories
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ](https://github.com/bdsach/Quizzify-App)
