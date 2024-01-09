@@ -8,6 +8,9 @@
 |:---------:|:---------:|
 | ![Login View](https://raw.githubusercontent.com/bdsach/Quizzify-App/main/thumbnail/login-view.png) | ![Home View](https://raw.githubusercontent.com/bdsach/Quizzify-App/main/thumbnail/home-view.png)  |
 
+| Question View  | Result View  |
+|:---------:|:---------:|
+| ![Question View](https://raw.githubusercontent.com/bdsach/Quizzify-App/main/thumbnail/question.png) | ![Result View](https://raw.githubusercontent.com/bdsach/Quizzify-App/main/thumbnail/result.png)  |
 
 ## Key Features
 
