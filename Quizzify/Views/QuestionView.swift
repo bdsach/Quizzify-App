@@ -33,7 +33,6 @@ struct QuestionView: View {
             
         })
         .background(.appColorBackground)
-        .navigationBarBackButtonHidden()
         .onAppear {
             vm.getQuestions(currentQuizId: quizId)
         }
@@ -58,15 +57,19 @@ struct QuestionView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(3)
                     
-                    Rectangle()
-                        .fill(.clear)
-                        .frame(maxWidth: .infinity, maxHeight: 150)
-                        .overlay {
-                            Image("workout")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding()
+                    VStack(alignment: .center, spacing: 0) {
+                        AsyncImage(url: URL(string: questions[vm.qIndex].image)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                                .controlSize(.large)
                         }
+                        .frame(maxWidth: 200, maxHeight: 150)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                    .padding(.bottom, 10)
+                    
                     ForEach(questions[vm.qIndex].options, id: \.id) { option in
                         OptionButton(selected: $vm.selected, answerId: $vm.answerId, questionIndex: vm.qIndex, questionCount: questions.count, option: option)
                     }

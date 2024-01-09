@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Question: Codable {
-    let id, quizID, quizText, questionText: String
+    let id, quizID, quizText, questionText, image: String
     let options: [Option]
     
     enum CodingKeys: String, CodingKey {
@@ -18,6 +18,7 @@ struct Question: Codable {
         case quizText = "quiz_text"
         case questionText = "question_text"
         case options
+        case image = "question_image"
     }
 }
 

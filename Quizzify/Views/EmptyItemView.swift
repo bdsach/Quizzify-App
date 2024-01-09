@@ -20,6 +20,12 @@ struct EmptyItemView: View {
                 .foregroundStyle(.gray)
             
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+        }
     }
 }
 
